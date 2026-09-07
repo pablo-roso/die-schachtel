@@ -44,14 +44,74 @@
 
   <section id="top" class="hero">
     <div class="hero-glow" aria-hidden="true"></div>
-    <div class="hero-content">
-      <p class="eyebrow">Freiburger Altstadt &middot; Adelhauser Straße &middot; direkt am Bächle</p>
-      <h1>Die&nbsp;Schachtel</h1>
-      <p class="hero-claim">Kultige Kneipe. Ehrliches Bier. Echtes Freiburg.</p>
-      <div class="hero-cta">
-        <a href="#angebot" class="btn btn-primary">Zur Karte</a>
-        <a href="#standort" class="btn btn-outline">Anfahrt</a>
+    <div class="hero-inner">
+      <div class="hero-content">
+        <p class="eyebrow">Freiburger Altstadt &middot; Adelhauser Straße &middot; direkt am Bächle</p>
+        <h1>Die&nbsp;Schachtel</h1>
+        <p class="hero-claim">Kultige Kneipe. Ehrliches Bier. Echtes Freiburg.</p>
+        <div class="hero-cta">
+          <a href="#angebot" class="btn btn-primary">Zur Karte</a>
+          <a href="#standort" class="btn btn-outline">Anfahrt</a>
+        </div>
       </div>
+
+      <!--
+        Das gezapfte Glas: gezeichnet statt fotografiert, damit es in jeder
+        Größe scharf bleibt, keine Ladezeit kostet und keine Bildrechte
+        braucht — und weil ein Stockfoto vom Bier ohnehin nach jedem
+        anderen Laden aussieht. Rein dekorativ, deshalb aria-hidden.
+        Die Perlen steigen per CSS auf; wer Bewegung abbestellt hat,
+        bekommt sie still (siehe prefers-reduced-motion in styles.css).
+      -->
+      <svg class="hero-art" viewBox="0 0 130 190" fill="none" aria-hidden="true" focusable="false">
+        <defs>
+          <linearGradient id="hero-beer" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#8d5111" />
+            <stop offset=".28" stop-color="#e8a33d" />
+            <stop offset=".55" stop-color="#ffd591" />
+            <stop offset=".78" stop-color="#dc9631" />
+            <stop offset="1" stop-color="#7d460d" />
+          </linearGradient>
+          <linearGradient id="hero-glass" x1="0" y1="0" x2="1" y2="0">
+            <stop offset="0" stop-color="#ffffff" stop-opacity=".30" />
+            <stop offset=".2" stop-color="#ffffff" stop-opacity=".04" />
+            <stop offset=".72" stop-color="#ffffff" stop-opacity=".02" />
+            <stop offset=".93" stop-color="#ffffff" stop-opacity=".22" />
+          </linearGradient>
+          <linearGradient id="hero-foam" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0" stop-color="#fffaf0" />
+            <stop offset="1" stop-color="#f0d9ae" />
+          </linearGradient>
+          <clipPath id="hero-inside">
+            <path d="M33 54h64l-7 105a12 12 0 0 1-12 11H52a12 12 0 0 1-12-11z" />
+          </clipPath>
+        </defs>
+
+        <ellipse cx="65" cy="96" rx="62" ry="74" fill="#e8a33d" opacity=".13" />
+
+        <path d="M33 54h64l-7 105a12 12 0 0 1-12 11H52a12 12 0 0 1-12-11z" fill="url(#hero-beer)" />
+
+        <g clip-path="url(#hero-inside)" fill="#fff6e2">
+          <circle class="bubble b1" cx="52" cy="150" r="2.4" />
+          <circle class="bubble b2" cx="72" cy="158" r="1.8" />
+          <circle class="bubble b3" cx="86" cy="140" r="2.1" />
+          <circle class="bubble b4" cx="60" cy="126" r="1.6" />
+          <circle class="bubble b5" cx="79" cy="112" r="2.3" />
+          <circle class="bubble b6" cx="48" cy="104" r="1.5" />
+          <circle class="bubble b7" cx="67" cy="92" r="1.9" />
+          <circle class="bubble b8" cx="88" cy="84" r="1.4" />
+        </g>
+
+        <path d="M30 56c-3-13 6-19 14-16 2-12 15-16 23-9 9-8 22-3 23 8 10 1 13 10 9 17z" fill="url(#hero-foam)" />
+        <path d="M34 48c4-6 11-7 15-3M58 39c5-4 12-3 16 2" stroke="#ffffff" stroke-opacity=".7" stroke-width="2" stroke-linecap="round" />
+
+        <path d="M33 54h64l-7 105a12 12 0 0 1-12 11H52a12 12 0 0 1-12-11z" fill="url(#hero-glass)" stroke="#f6cd8a" stroke-opacity=".55" stroke-width="2.2" />
+        <path d="M43 66l-4 88" stroke="#fffaf0" stroke-opacity=".45" stroke-width="3.4" stroke-linecap="round" />
+        <path d="M88 70l-3 74" stroke="#fffaf0" stroke-opacity=".18" stroke-width="2.4" stroke-linecap="round" />
+        <path d="M41 148h48" stroke="#f6cd8a" stroke-opacity=".35" stroke-width="1.6" />
+
+        <ellipse cx="65" cy="176" rx="46" ry="9" fill="#0d0805" opacity=".5" />
+      </svg>
     </div>
   </section>
 

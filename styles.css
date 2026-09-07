@@ -273,10 +273,64 @@ a {
   pointer-events: none;
 }
 
-.hero-content {
+/* Zweispaltiger Hero ab 900px: Text links, gezapftes Glas rechts. Darunter
+   fällt er wieder in eine Spalte zurück, und das Glas rückt über den Text —
+   auf dem Telefon ist das Bild die schnellere Auskunft als die Zeile. */
+.hero-inner {
   position: relative;
   z-index: 2;
-  max-width: 720px;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 300px);
+  align-items: center;
+  gap: 3.5rem;
+  width: 100%;
+  max-width: 1080px;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.hero-content {
+  max-width: 640px;
+}
+
+.hero-art {
+  width: 100%;
+  height: auto;
+  filter: drop-shadow(0 24px 40px rgba(0, 0, 0, 0.45));
+}
+
+/* Aufsteigende Perlen. Sie starten unten, verblassen oben und sind
+   absichtlich unterschiedlich schnell — gleichmäßige Blasen sehen aus wie
+   eine Animation, ungleichmäßige wie ein Bier. */
+.hero-art .bubble {
+  animation: beer-rise 5.5s linear infinite;
+  transform-origin: center;
+}
+
+.hero-art .b1 { animation-duration: 5.2s; animation-delay: -0.2s; }
+.hero-art .b2 { animation-duration: 6.4s; animation-delay: -1.6s; }
+.hero-art .b3 { animation-duration: 4.6s; animation-delay: -2.9s; }
+.hero-art .b4 { animation-duration: 7.1s; animation-delay: -0.9s; }
+.hero-art .b5 { animation-duration: 5.8s; animation-delay: -3.6s; }
+.hero-art .b6 { animation-duration: 6.9s; animation-delay: -2.1s; }
+.hero-art .b7 { animation-duration: 4.9s; animation-delay: -4.4s; }
+.hero-art .b8 { animation-duration: 6.1s; animation-delay: -1.2s; }
+
+@keyframes beer-rise {
+  0% {
+    transform: translateY(14px);
+    opacity: 0;
+  }
+  12% {
+    opacity: 0.75;
+  }
+  85% {
+    opacity: 0.5;
+  }
+  100% {
+    transform: translateY(-96px);
+    opacity: 0;
+  }
 }
 
 .eyebrow {
@@ -288,8 +342,11 @@ a {
   margin-bottom: 1.2rem;
 }
 
+/* Kleiner als vor der zweispaltigen Fassung: 11vw war für einen Hero über
+   die volle Breite gerechnet und lief in der schmaleren Spalte in das Glas
+   hinein. */
 .hero h1 {
-  font-size: clamp(3.2rem, 11vw, 6.5rem);
+  font-size: clamp(2.8rem, 5.6vw, 5rem);
   color: var(--amber-light);
   text-shadow: 0 6px 30px rgba(0, 0, 0, 0.5);
 }
@@ -305,7 +362,7 @@ a {
   display: flex;
   flex-wrap: wrap;
   gap: 1rem;
-  justify-content: center;
+  justify-content: flex-start;
 }
 
 /* ---------- About ---------- */
@@ -657,6 +714,32 @@ a {
 
   .section {
     padding: 3.5rem 1.2rem;
+  }
+}
+
+@media (max-width: 900px) {
+  .hero-inner {
+    grid-template-columns: 1fr;
+    justify-items: center;
+    gap: 2.5rem;
+    text-align: center;
+  }
+
+  .hero-inner .hero-art {
+    order: -1;
+    max-width: 190px;
+  }
+
+  .hero-cta {
+    justify-content: center;
+  }
+}
+
+/* Wer Bewegung abbestellt hat, bekommt ein stehendes Glas — die Perlen sind
+   Schmuck, nicht Information. */
+@media (prefers-reduced-motion: reduce) {
+  .hero-art .bubble {
+    animation: none;
   }
 }
 
